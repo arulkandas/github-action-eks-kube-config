@@ -2,8 +2,7 @@ FROM python:3.10.8-alpine3.17
 
 LABEL maintainer="Arulkumar Kandasamy"
 
-RUN apt-get update && \
-    apt-get install curl
+RUN apk --no-cache add curl
 
 RUN pip install awscli
 
