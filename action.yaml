@@ -4,7 +4,7 @@ description: An action to update kubeconfig file in github runner
 
 runs:
   using: 'docker'
-  image: 'ghcr.io/arulkandas/github-action-eks-kube-config:latest'
+  image: 'docker://ghcr.io/arulkandas/github-action-eks-kube-config:latest'
 inputs:
   aws_access_key_id:
     description: AWS_ACCESS_KEY_ID
