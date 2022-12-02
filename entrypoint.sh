@@ -22,7 +22,7 @@ aws eks update-kubeconfig --name helm-deploy-poc
 
 chmod 600 ~/.kube/config
 
-arg1=$(awk -F; '{print $1}' <<< '$@')
-arg2=$(awk -F; '{print $2}' <<< '$@')
-kubectl ${arg1}
-kubectl ${arg2}
+args="$@"
+IFS=';' read -ra tokens <<< ${args}
+kubectl ${tokens[0]}
+kubectl ${tokens[1]}
