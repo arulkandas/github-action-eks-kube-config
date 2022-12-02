@@ -1,8 +1,11 @@
-FROM python:3.10.8-alpine3.17
+FROM python:3.7.15-slim-buster
 
 LABEL maintainer="Arulkumar Kandasamy"
 
-RUN apk --no-cache add curl
+RUN apt update && \
+    apt upgrade && \
+    apt install curl
+
 
 RUN pip install awscli
 
