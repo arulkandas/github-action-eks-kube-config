@@ -3,20 +3,24 @@ name: Build runner docker
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-runner-docker:
     name: Build runner docker
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - namw  Checkout repository
+        uses: actions/checkout@v3
+
       - name: Login Container Registry
         uses: docker/login-action@v2.1.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}   
+          password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
       - name: Build and push image
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/master' ]]; then
