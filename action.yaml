@@ -4,7 +4,7 @@ description: An action to update kubeconfig file in github runner
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/arulkandas/github-action-eks-kube-config:latest'
+  image: 'ghcr.io/arulkandas/github-action-eks-kube-config:latest'
 inputs:
   aws_access_key_id:
     description: AWS_ACCESS_KEY_ID
@@ -18,3 +18,6 @@ inputs:
   cluster_name:
     description: The name of the cluster you're using
     required: true
+  registry: ghcr.io
+  username: arulkandas
+  password: ${{ secrets.PERSONAL_ACCESS_TOKEN}}
