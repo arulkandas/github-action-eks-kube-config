@@ -23,7 +23,6 @@ aws eks update-kubeconfig --name helm-deploy-poc
 chmod 600 ~/.kube/config
 
 args="$@"
-cat ${args}
 IFS=';' tokens=( ${args} )
 kubectl ${tokens[0]}
 kubectl ${tokens[1]}
