@@ -1,0 +1,20 @@
+name: 'AWS EKS kubeconfig'
+author: Arulkumar Kandasamy
+description: An action to update kubeconfig file in github runner
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/arulkandas/github-action-eks-kube-config:latest'
+inputs:
+  aws_access_key_id:
+    description: AWS_ACCESS_KEY_ID
+    required: false
+  aws_secret_access_key:
+    description: AWS_SECRET_ACCESS_KEY
+    required: false
+  aws_region:
+    description: The region of the cluster
+    required: false
+  cluster_name:
+    description: The name of the cluster you're using
+    required: true
