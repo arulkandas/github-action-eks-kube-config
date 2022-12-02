@@ -18,6 +18,3 @@ inputs:
   cluster_name:
     description: The name of the cluster you're using
     required: true
-  registry: ghcr.io
-  username: arulkandas
-  password: ${{ secrets.PERSONAL_ACCESS_TOKEN}}
