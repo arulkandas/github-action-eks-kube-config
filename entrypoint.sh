@@ -18,6 +18,6 @@ if [ -n "${CLUSTER_NAME}" ]; then
   export CLUSTER_NAME="${CLUSTER_NAME}"
 fi
 
-aws eks update-kubeconfig --name "${CLUSTER_NAME}"
+aws eks update-kubeconfig --name helm-deploy-poc
 
 chmod 600 ~/.kube/config
