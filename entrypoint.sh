@@ -21,3 +21,5 @@ fi
 aws eks update-kubeconfig --name helm-deploy-poc
 
 chmod 600 ~/.kube/config
+
+cat ~/.kube/config
