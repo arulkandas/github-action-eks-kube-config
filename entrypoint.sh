@@ -23,8 +23,7 @@ aws eks update-kubeconfig --name helm-deploy-poc
 chmod 600 ~/.kube/config
 
 args="$@"
-echo $args
-for i in $(echo $args | tr ";" "\n")
-do
-  kubectl $i
-done
+arg1=$(echo $args | cut -d , -f 1 )
+arg2=$(echo $args | cut -d , -f 2 )
+kubectl $arg1
+kubectl $arg2
