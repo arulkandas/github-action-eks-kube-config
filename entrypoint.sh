@@ -29,6 +29,6 @@ i=2
 while [ $i -le $loop_count ];
 do
    command=$(echo $args | cut -d , -f $i )
-   kubectl $command
+   $command
    i=$(( i + 1 ))
 done
