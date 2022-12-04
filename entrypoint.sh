@@ -25,8 +25,10 @@ chmod 600 ~/.kube/config
 args="$@"
 number_of_commands=$(echo $args | cut -d , -f 1 )
 loop_count=$((number_of_commands+1))
-for (( i=2; i<=$loop_count; i++ ))
+i=2
+while [ $i -le $loop_count ];
 do
    command=$(echo $args | cut -d , -f $i )
    kubectl $command
+   i=$(( i + 1 ))
 done
