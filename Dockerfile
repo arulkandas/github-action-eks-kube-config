@@ -4,7 +4,7 @@ LABEL maintainer="Arulkumar Kandasamy"
 
 RUN apt-get update && \
     apt-get install -y curl && \
-    apt-get install jq
+    apt-get install -y jq
 
 
 RUN pip install awscli
