@@ -29,20 +29,21 @@ i=2
 while [ $i -le $loop_count ];
 do
     command=$(echo $args | cut -d , -f $i )
-    namespace_str1=$(echo $command | cut -d ' ' -f 2 )
-    namespace_str2=$(echo $command | cut -d ' '  -f 3 )
-    namespace=$(echo $command | cut -d ' '  -f 4 )
-    namespace_str="${namespace_str1} ${namespace_str2}"
+    # Below code line number 33 to 46 checks whether namespace exists and skip creation if already exists
+    namespace_str1=$(echo $command | cut -d ' ' -f 2 ) # extracts create string
+    namespace_str2=$(echo $command | cut -d ' '  -f 3 ) # extracts namespace or ns string
+    namespace=$(echo $command | cut -d ' '  -f 4 ) # extract namespace name
+    namespace_str="${namespace_str1} ${namespace_str2}" # namespace_str will be create namespace or create ns
     search_text='create namespace'
     search_text_alt='create ns'
-    if [[ "$namespace_str" == "$search_text" ||  "$namespace_str" = "$search_text_alt"  ]]; then
-        namespaceStatus=$(kubectl get ns $namespace -o json | jq .status.phase -r)
+    if [[ "$namespace_str" == "$search_text" ||  "$namespace_str" = "$search_text_alt"  ]]; then # check whether it is create namespace command
+        namespaceStatus=$(kubectl get ns $namespace -o json | jq .status.phase -r) # check whether namespace exists
         if [ $namespaceStatus == "Active" ]
         then
             i=$(( i + 1 ))
-            continue
+            continue      # skip loop if namespace exists
         fi
     fi
-    $command
+    $command  # Executing kubectl commands
     i=$(( i + 1 ))
 done
