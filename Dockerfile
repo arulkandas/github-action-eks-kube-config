@@ -2,7 +2,9 @@ FROM python:3.7.15-slim-buster
 
 LABEL maintainer="Arulkumar Kandasamy"
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get install jq
 
 
 RUN pip install awscli
