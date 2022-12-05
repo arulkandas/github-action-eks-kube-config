@@ -18,7 +18,7 @@ if [ -n "${CLUSTER_NAME}" ]; then
   export CLUSTER_NAME="${CLUSTER_NAME}"
 fi
 
-aws eks update-kubeconfig --name helm-deploy-poc
+aws eks update-kubeconfig --name helm-deploy-poc --role-arn arn:aws:iam::991619704801:role/OIDC_GH_ADMIN_aws-eks-access
 
 chmod 600 ~/.kube/config
 
