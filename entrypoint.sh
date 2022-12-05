@@ -37,7 +37,6 @@ do
     search_text_alt='create ns'
     if [[ "$namespace_str" == "$search_text" ||  "$namespace_str" = "$search_text_alt"  ]]; then
         namespaceStatus=$(kubectl get ns $namespace -o json | jq .status.phase -r)
-        echo "namespaceStatus = $namespaceStatus"
         if [ $namespaceStatus == "Active" ]
         then
             i=$(( i + 1 ))
