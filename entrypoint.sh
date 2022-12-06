@@ -22,7 +22,8 @@ aws eks update-kubeconfig --name helm-deploy-poc
 
 chmod 600 ~/.kube/config
 
-args="$@"
+commands="$args[@]"
+echo $commands
 number_of_commands=$(echo $args | cut -d , -f 1 )
 loop_count=$((number_of_commands+1))
 i=2
